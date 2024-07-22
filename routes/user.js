@@ -10,9 +10,9 @@ const joiPassword = Joi.extend(joiPasswordExtendCore)
 const saltRounds = 10
 
 
-const route = express.Router()
+const router = express.Router()
 
-route.post('/createUser',async (req,res)=>{
+router.post('/createUser',async (req,res)=>{
     // we will validate the req (valid email valid password ....)
     const {error} = validateUser(req.body)
     if(error) return res.status(400).send(error.details[0].message)
@@ -32,7 +32,7 @@ route.post('/createUser',async (req,res)=>{
 })
 
 // update a user 1/ i will only update a user after he is authorized to do the update operation // he send a token this token if is verifed the user object of the request it will be populated with payloads of the token which will include id email username adress.. ext  
-route.put('/update-user',auth,async(req,res)=>{
+router.put('/update-user',auth,async(req,res)=>{
     const{error} = validateUser(req.body)
     if(error) return res.status(400).send(error.details[0].message)
     const result = await User.findByIdAndUpdate({
@@ -45,12 +45,12 @@ route.put('/update-user',auth,async(req,res)=>{
     res.send(result)
 })
 // delete a user
-route.delete('/delete-user',auth,async(req, res)=>{
+router.delete('/delete-user',auth,async(req, res)=>{
     const result = await User.findByIdAndDelete(req.user.id)
     res.send(result)
 })
 // the me user 
-route.get('/me',auth,async (req,res)=>{
+router.get('/me',auth,async (req,res)=>{
     const result = await User.findById(req.user.id)
                 .select({
                     username:1,
@@ -60,7 +60,7 @@ route.get('/me',auth,async (req,res)=>{
     res.send(result)
 })
 // get all user
-route.get('/getAllUser',auth,admin, async(req, res)=>{
+router.get('/getAllUser',auth,admin, async(req, res)=>{
     const result = await User.find()
     .select({
         username:1,
@@ -101,6 +101,4 @@ function validateUser(user){
     })
     return schema.validate(user)
 }
-
-
-module.exports = route
+module.exports = router

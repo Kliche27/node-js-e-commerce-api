@@ -1,8 +1,8 @@
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
 const express = require('express')
-const route = express.Router()
-route.post('/',async(req, res)=>{
+const router = express.Router()
+router.post('/',async(req, res)=>{
     const user = await User.findOne({email:req.body.email})
     if(!user) return res.status(400).send('Invalid email or password')
     const result = await bcrypt.compare(req.body.password, user.password)
@@ -19,4 +19,4 @@ route.post('/',async(req, res)=>{
 
 
 
-module.exports = route
+module.exports = router

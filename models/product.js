@@ -40,17 +40,17 @@ const ProductSchema = new mongoose.Schema({
     },
     stockQuantity: {
         type: Number,
-        min: 0, // Changed to allow 0 for out-of-stock
+        min: 0, 
         required: true
     },
     sku: {
-        type: String, // Changed from Number to String
+        type: String, 
         required: true,
         unique: true,
         trim: true
     },
     images: {
-        type: [String], // Changed to an array of strings
+        type: [String], 
         required: true
     },
     brand: {
@@ -69,5 +69,5 @@ const ProductSchema = new mongoose.Schema({
     timestamps: true // Automatically adds createdAt and updatedAt fields
 });
 
-const Product = mongoose.model('Product',ProductSchema)
+const Product = mongoose.model('product',ProductSchema)
 module.exports = Product
