@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken')
-const secretKey = "alaakliche27"
 
 function auth (req, res, next){
     const token = req.header('x-auth-token')
