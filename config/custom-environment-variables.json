@@ -1,3 +1,4 @@
 {
-    "secretKey": "app_node_secret_key"
+    "secretKey": "app_node_secret_key",
+    "stripeSecretKey" : "app_node_stripe_secret_key"
 }

@@ -11,9 +11,17 @@ const paymentSchema = new mongoose.Schema({
     },
     paymentStatus:{
         type: String,
-        enum:['succed','refused','refund'],
+        enum:['succeeded','refused','refunded'],
         required: true
+    },
+    paymentIntentId:{
+        type: String,
+        required: true,
+        unique: true
     }
 },{
     timestamps:true
 })
+
+const Payment = mongoose.model('payment',paymentSchema)
+module.exports = Payment

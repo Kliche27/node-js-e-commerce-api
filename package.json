@@ -20,11 +20,14 @@
     "bcrypt": "^5.1.1",
     "config": "^3.3.12",
     "express": "^4.19.2",
+    "fawn": "^2.1.5",
     "joi": "^17.13.3",
+    "joi-objectid": "^4.0.2",
     "joi-password": "^4.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.1",
     "nodeman": "^1.1.2",
+    "stripe": "^16.2.0",
     "validator": "^13.12.0"
   }
 }

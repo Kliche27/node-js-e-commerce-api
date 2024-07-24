@@ -9,6 +9,7 @@ router.post('/',async(req, res)=>{
     //console.log(password)
     if(!result) return res.status(400).send("Invalid email or password")
     const token = await user.generateToken()
+    console.log(token)
     res.header({"x-auth-token":token})
     res.send("you are loged in")    
 })
